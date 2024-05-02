@@ -1,3 +1,61 @@
-<p>
-  home works!
-</p>
+<div class="page-content">
+  <div class="type-box">
+    <div class="type-title">种类</div>
+    <div class="type-item-box">
+      <div class="type-item">Note</div>
+      <div class="type-item">Telegraphic</div>
+    </div>
+  </div>
+
+  <div class="rate-box">
+    <div class="rate-box-title">
+      <div class="rate-box-title-item">货币换算器</div>
+      <div class="rate-box-title-item" (click)="callNative()">重置</div>
+    </div>
+    <div class="rate-box-content">
+      <div class="rate-box-content-side">
+        <div>CNY</div>
+        <div style="padding: 20px 0;">1.00</div>
+      </div>
+      <div class="rate-box-content-icon">exchange</div>
+      <div class="rate-box-content-side">
+        <div>USD</div>
+        <div style="padding: 20px 0;">1.00</div>
+      </div>
+    </div>
+    <div style="text-align: center;padding-bottom: 20px;">1人民币=0.15美元</div>
+  </div>
+
+  <div class="tips-box">
+    汇率受市场变化和交易时间的影响，在交易前需要您确认有7位小数的实际汇率。
+  </div>
+
+  <div class="table-box">
+    <div class="table-title">外汇汇率</div>
+    <div class="table-column">
+      <div class="table-column-item">货币</div>
+      <div class="table-column-item">买入价</div>
+      <div class="table-column-item">卖出价</div>
+    </div>
+    <div class="table-column" *ngFor="let item of array">
+      <div class="table-column-item">{{ item.coint }}</div>
+      <div class="table-column-item">{{ item.price1 }}</div>
+      <div class="table-column-item">{{ item.price2 }}</div>
+    </div>
+  </div>
+
+  <div class="tips-bottom-box">
+    <div>
+      上次更新时间为2021年02月18日CST
+    </div>
+    <div>
+      这些汇率只是指示性汇率，汇率是根据交易日开始时的价格确定的。您在每笔交易前需要确认汇率。
+    </div>
+  </div>
+
+  <div class="button-box">
+    <div class="button">
+      外汇服务
+    </div>
+  </div>
+</div>

@@ -1,10 +1,12 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, NoPreloading } from '@angular/router';
 import { MatButtonModule, MatCardModule, MatInputModule, MatSnackBarModule, MatToolbarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { EqualValidatorDirective } from './shared/equal.validator.directive';
+
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,10 +18,10 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 
 const myRoots: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' , canActivate: [AuthGuard]},
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]}
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({
@@ -34,7 +36,7 @@ const myRoots: Routes = [
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule,
     MatButtonModule, MatCardModule, MatInputModule, MatSnackBarModule, MatToolbarModule,
-    RouterModule.forRoot(myRoots)
+    RouterModule.forRoot(myRoots, { useHash: true, preloadingStrategy: NoPreloading })
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
